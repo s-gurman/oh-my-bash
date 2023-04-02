@@ -60,7 +60,7 @@ _omb_deprecate_const 20000 ICya "$_omb_prompt_cyan"        "${_omb_deprecate_msg
 _omb_deprecate_const 20000 IWhi "$_omb_prompt_white"       "${_omb_deprecate_msg_please_use/'%s'/_omb_prompt_white}"
 
 # ----------------------------------------------------------------- COLOR CONF
-D_DEFAULT_COLOR="$_omb_prompt_silver"
+D_DEFAULT_COLOR="$_omb_prompt_normal"
 D_INTERMEDIATE_COLOR="$_omb_prompt_bold_silver"
 D_USER_COLOR="$_omb_prompt_olive"
 D_SUPERUSER_COLOR="$_omb_prompt_brown"
@@ -92,7 +92,7 @@ function is_vim_shell {
 function mitsuhikos_lastcommandfailed {
   local status=$?
   if ((status != 0)); then
-    echo "${D_INTERMEDIATE_COLOR}exited ${D_CMDFAIL_COLOR}$status ${D_DEFAULT_COLOR}"
+    echo "${D_INTERMEDIATE_COLOR} exited ${D_CMDFAIL_COLOR}$status ${D_DEFAULT_COLOR}"
   fi
 }
 
@@ -154,7 +154,7 @@ function prompt_git {
         git rev-parse --short HEAD 2> /dev/null ||
         echo '(unknown)')
 
-    [[ $s ]] && s=" [$s]"
+    [[ $s ]] && s="[$s]"
 
     echo -e "${1}${branchName}${_omb_prompt_teal}$s"
   else
@@ -176,8 +176,7 @@ function _omb_theme_PROMPT_COMMAND {
     PS1+=$(safe_battery_charge)${RESTORE_CURSOR}
   fi
   PS1+="${D_USER_COLOR}\u ${D_INTERMEDIATE_COLOR}"
-  PS1+="at ${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}"
-  PS1+="in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}"
+  PS1+="in ${D_DIR_COLOR}\w${D_INTERMEDIATE_COLOR}"
   PS1+=$(prompt_git "$D_INTERMEDIATE_COLOR on $D_GIT_COLOR")
   PS1+=${LAST_COMMAND_FAILED}
   PS1+=$(demula_vcprompt)

@@ -2,7 +2,7 @@
 
 source "$OSH/themes/powerline-multiline/powerline-multiline.base.sh"
 
-PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:="❯"}
+PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:="${_omb_prompt_bold}\$${_omb_prompt_normal}"}
 POWERLINE_LEFT_SEPARATOR=${POWERLINE_LEFT_SEPARATOR:=""}
 POWERLINE_RIGHT_SEPARATOR=${POWERLINE_RIGHT_SEPARATOR:=""}
 
